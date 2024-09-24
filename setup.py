@@ -2,8 +2,7 @@ import yaml
 import sys
 import os
 
-setup = os.path.dirname(os.path.realpath(__file__))
-setup = os.path.abspath(os.path.split(setup)[0]+'/config_files')
+setup = os.path.abspath(os.path.dirname(os.path.realpath(__file__))+'/config_files')
 
 def YN(q1,q2,default):
     choice = input(f'{q1} {default} ')
@@ -13,6 +12,7 @@ def YN(q1,q2,default):
         return(input(f'{q2} '))
 
 def run(wd):
+    print(setup)
     with open(f'{setup}/user_path_definitions_template.yml') as yml:
         config = yaml.safe_load(yml)
 
