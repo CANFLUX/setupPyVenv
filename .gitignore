@@ -2,6 +2,7 @@
 
 # Ignore all configurations except the default config and the template configurations
 !.gitignore
+!*config_files/
 !requirements_unix.txt
 !requirements_windows.txt
 !user_path_definitions_template.yml
