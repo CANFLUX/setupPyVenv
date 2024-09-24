@@ -6,6 +6,6 @@ rootDir:
   # Path to your EddyPro installation, 
   EddyPro: C:/Program Files/LI-COR/EddyPro-7.0.9/
   # All intermediate and final outputs will be written to this folder
-  workingDir: C:/highfreq/
 relDir:
   Database: Database/
+  HighFrequency: highfreq/

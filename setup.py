@@ -15,6 +15,7 @@ def run(wd):
     print(setup)
     with open(f'{setup}/user_path_definitions_template.yml') as yml:
         config = yaml.safe_load(yml)
+    print('Verify paths for setup or specify custom locations')
 
     for key,value in config['rootDir'].items():
         value = os.path.abspath(value)
@@ -30,4 +31,12 @@ def run(wd):
 
     with open(f'{wd}/config_files/user_path_definitions.yml', 'w') as outfile:
         yaml.dump(config, outfile, default_flow_style=False)
+
+    if os.path.isfile(f'{wd}/.gitmodules'):
+        with open('.gitmodules') as f:
+            for l in f.readlines():
+                if 'path = ' in l:
+                    if os.path.isdir(f"{wd}/{l.split('path = ')[1].replace('\n','')}/config_files"):
+                        with open(f"{wd}/{l.split('path = ')[1].replace('\n','')}/config_files/user_path_definitions.yml", 'w') as outfile:
+                            yaml.dump(config, outfile, default_flow_style=False)
         
