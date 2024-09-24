@@ -2,6 +2,11 @@ import subprocess
 import sys
 import os
 
+setup = os.path.dirname(os.path.realpath(__file__))
+setup = os.path.abspath(os.path.split(setup)[0]+'/config_files')
+wd = os.getcwd()
+
+
 def YN(q1,q2,default):
     choice = input(f'{q1} {default} ')
     if choice.lower()=='y':
@@ -13,12 +18,7 @@ def YN(q1,q2,default):
         else:
             sys.exit('Exiting install.py')
 
-setup = os.path.dirname(os.path.realpath(__file__))
-base = os.path.split(setup)[0]
-wd = os.getcwd()
-
 wd = YN('Y/N install dependencies as a virtual environment in:','Y/N install dependencies in your base Python installation: ',wd)
-
 
 if sys.platform.startswith("darwin"): 
     req = 'requirements_unix.txt'

@@ -3,7 +3,7 @@ import sys
 import os
 
 setup = os.path.dirname(os.path.realpath(__file__))
-base = os.path.split(setup)[0]
+setup = os.path.abspath(os.path.split(setup)[0]+'/config_files')
 
 def YN(q1,q2,default):
     choice = input(f'{q1} {default} ')
@@ -28,6 +28,6 @@ def run(wd):
             os.makedirs(value)
         config["relDir"][key] = value
 
-    with open(f'{wd}/user_path_definitions.yml', 'w') as outfile:
+    with open(f'{wd}/config_files/user_path_definitions.yml', 'w') as outfile:
         yaml.dump(config, outfile, default_flow_style=False)
         
