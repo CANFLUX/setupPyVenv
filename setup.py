@@ -36,7 +36,8 @@ def run(wd):
         with open('.gitmodules') as f:
             for l in f.readlines():
                 if 'path = ' in l:
-                    if os.path.isdir(f"{wd}/{l.split('path = ')[1].replace('\n','')}/config_files"):
-                        with open(f"{wd}/{l.split('path = ')[1].replace('\n','')}/config_files/user_path_definitions.yml", 'w') as outfile:
+                    l = l.split('path = ')[1].replace('\n','')
+                    if os.path.isdir(f"{wd}/{l}/config_files"):
+                        with open(f"{wd}/{l}/config_files/user_path_definitions.yml", 'w') as outfile:
                             yaml.dump(config, outfile, default_flow_style=False)
         
