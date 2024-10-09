@@ -30,6 +30,8 @@ def run(wd):
         config["rootDir"][key] = value
     config.pop('relDir')
 
+    if os.path.isdir(f'{wd}/config_files') == False:
+        os.makedirs(f'{wd}/config_files')
     with open(f'{wd}/config_files/user_path_definitions.yml', 'w') as outfile:
         yaml.dump(config, outfile, default_flow_style=False)
 
