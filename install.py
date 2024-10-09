@@ -6,6 +6,10 @@ import os
 setup = os.path.abspath(os.path.dirname(os.path.realpath(__file__))+'/config_files')
 wd = os.getcwd()
 
+subprocess.check_call([sys.executable,'-m','pip','install','pyyaml'])
+import setup
+setup.run(wd=wd)
+
 def YN(q1,q2,default):
     choice = input(f'{q1} {default} ')
     if choice.lower()=='y':
@@ -37,5 +41,3 @@ if os.path.isdir(f'{wd}/.venv')==False:
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     print(proc.stderr,proc.stdout)
         
-import setup
-setup.run(wd=wd)
