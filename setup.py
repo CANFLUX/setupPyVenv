@@ -27,7 +27,8 @@ def run(wd):
         value = YN(f'Y/N Path to {key}:',f'Specify alternative location for {key}: ',value)
         if os.path.isdir(value) == False:
             os.makedirs(value)
-        config["relDir"][key] = value
+        config["rootDir"][key] = value
+    config.pop('relDir')
 
     if os.path.isdir(f'{wd}/config_files') == False:
         os.makedirs(f'{wd}/config_files')
