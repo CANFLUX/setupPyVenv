@@ -5,4 +5,4 @@ rootDir:
 # Relative locations
 relDir:
   Database: Database/
-  HighFrequency: highfreq/
+  Raw_HighFrequency_Data: highfreq/

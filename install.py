@@ -3,9 +3,7 @@ import shutil
 import sys
 import os
 
-setup = os.path.abspath(os.path.dirname(os.path.realpath(__file__))+'/config_files')
 wd = os.getcwd()
-
 subprocess.check_call([sys.executable,'-m','pip','install','pyyaml'])
 import setup
 setup.run(wd=wd)
@@ -26,11 +24,11 @@ if os.path.isdir(f'{wd}/.venv'):
         shutil.rmtree(f'{wd}/.venv')
     
 if os.path.isdir(f'{wd}/.venv')==False:
-
+    cfgPath = os.path.abspath(os.path.dirname(os.path.realpath(__file__))+'/config_files')
     if sys.platform.startswith("darwin"): 
-        req = setup+'/requirements_unix.txt'
+        req = cfgPath+'/requirements_unix.txt'
     elif sys.platform.startswith("win"): 
-        req = setup+'/requirements_windows.txt'
+        req = cfgPath+'/requirements_windows.txt'
 
     cmd=['pip','install','-r', req]
 
