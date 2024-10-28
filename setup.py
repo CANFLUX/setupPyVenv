@@ -32,7 +32,9 @@ def run(wd):
 
     if os.path.isdir(f'{wd}/config_files') == False:
         os.makedirs(f'{wd}/config_files')
-    with open(f'{wd}/config_files/user_path_definitions.yml', 'w') as outfile:
+    if os.path.isdir(f'{wd}/config_files/user_defined') == False:
+        os.makedirs(f'{wd}/config_files/user_defined')
+    with open(f'{wd}/config_files/user_defined/user_path_definitions.yml', 'w') as outfile:
         yaml.dump(config, outfile, default_flow_style=False)
 
     if os.path.isfile(f'{wd}/.gitmodules'):
@@ -41,6 +43,6 @@ def run(wd):
                 if 'path = ' in l:
                     l = l.split('path = ')[1].replace('\n','')
                     if os.path.isdir(f"{wd}/{l}/config_files"):
-                        with open(f"{wd}/{l}/config_files/user_path_definitions.yml", 'w') as outfile:
+                        with open(f"{wd}/{l}/config_files/user_defined/user_path_definitions.yml", 'w') as outfile:
                             yaml.dump(config, outfile, default_flow_style=False)
         
